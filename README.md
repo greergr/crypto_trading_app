@@ -1,15 +1,26 @@
 # crypto_trading_app
 
-A new Flutter project.
+A Flutter-based cryptocurrency trading application that supports automated trading strategies and real-time market analysis.
+
+## Features
+
+- Real-time cryptocurrency price tracking
+- Automated trading bots
+- Advanced market analysis
+- Performance reporting
+- Multi-language support (English/Arabic)
+- Dark/Light theme
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is built with Flutter. To get started:
 
-A few resources to get you started if this is your first Flutter project:
+1. Install Flutter
+2. Clone this repository
+3. Run `flutter pub get`
+4. Run `flutter run`
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Documentation
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
