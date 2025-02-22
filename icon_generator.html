@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <canvas id="iconCanvas" width="1024" height="1024" style="border:1px solid black;"></canvas>
+    <script>
+        const canvas = document.getElementById('iconCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set background color
+        ctx.fillStyle = '#2E7D32';
+        ctx.fillRect(0, 0, 1024, 1024);
+        
+        // Draw text
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 200px Cairo';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('تداول', 512, 512);
+        
+        // Save as PNG
+        const link = document.createElement('a');
+        link.download = 'icon.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    </script>
+</body>
+</html>
