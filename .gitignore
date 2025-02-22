@@ -12,6 +12,35 @@
 .swiftpm/
 migrate_working_dir/
 
+# Flutter/Dart specific
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+*.iml
+
+# IDE specific
+.idea/
+.vscode/
+*.iws
+*.ipr
+
+# Environment variables
+.env*
+
+# Local development
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS specific
+.DS_Store
+Thumbs.db
+
 # IntelliJ related
 *.iml
 *.ipr
