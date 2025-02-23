@@ -3,13 +3,14 @@ set -e
 
 echo "🚀 Starting build process..."
 
-# Install Flutter
-echo "📦 Installing Flutter..."
-git clone https://github.com/flutter/flutter.git --depth 1 -b stable _flutter
-export PATH="$PATH:$(pwd)/_flutter/bin"
+# Download Flutter SDK
+echo "📦 Downloading Flutter..."
+git clone https://github.com/flutter/flutter.git --depth 1 -b stable flutter-sdk
+export PATH="$PATH:$(pwd)/flutter-sdk/bin"
 
-# Verify installation
-echo "✅ Verifying Flutter installation..."
+# Run basic Flutter commands
+echo "✅ Setting up Flutter..."
+flutter precache
 flutter doctor -v
 
 # Enable web

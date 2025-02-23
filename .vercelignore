@@ -7,9 +7,6 @@ README.md
 .packages
 .pub-cache
 .pub
-build.sh
-node_modules
-!build/web/
-!vercel.json
-!Dockerfile
-!docker-compose.yml
+Dockerfile
+docker-compose.yml
+flutter-sdk/
