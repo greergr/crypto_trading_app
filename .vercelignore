@@ -2,13 +2,14 @@
 .gitignore
 README.md
 *.log
-node_modules
 .dart_tool
 .flutter*
 .packages
 .pub-cache
 .pub
-*
+build.sh
+node_modules
 !build/web/
 !vercel.json
-!build.sh
+!Dockerfile
+!docker-compose.yml
