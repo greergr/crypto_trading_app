@@ -1,16 +1,16 @@
 #!/bin/bash
-set -e  # Exit on error
+set -e
 
 echo "🚀 Starting build process..."
 
 # Install Flutter
 echo "📦 Installing Flutter..."
-git clone https://github.com/flutter/flutter.git --depth 1 -b stable
-export PATH="$PATH:`pwd`/flutter/bin"
+git clone https://github.com/flutter/flutter.git --depth 1 -b stable _flutter
+export PATH="$PATH:$(pwd)/_flutter/bin"
 
 # Verify installation
 echo "✅ Verifying Flutter installation..."
-flutter doctor
+flutter doctor -v
 
 # Enable web
 echo "🌐 Enabling web support..."
