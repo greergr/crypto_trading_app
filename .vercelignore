@@ -1,12 +1,2 @@
-.git
-.gitignore
-README.md
-*.log
-.dart_tool
-.flutter*
-.packages
-.pub-cache
-.pub
-Dockerfile
-docker-compose.yml
-flutter-sdk/
+*
+!build/web/**
