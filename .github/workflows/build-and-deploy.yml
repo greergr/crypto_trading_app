@@ -23,20 +23,12 @@ jobs:
       - name: Build web
         run: flutter build web --release
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
       - name: Deploy to Vercel
-        env:
+        uses: BetaHuhn/deploy-to-vercel-action@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-        run: |
-          npm install -g vercel
-          vercel build/web \
-            --token $VERCEL_TOKEN \
-            --prod \
-            --confirm \
-            --name crypto-trading-app
+          PRODUCTION: true
+          WORKING_DIRECTORY: build/web
