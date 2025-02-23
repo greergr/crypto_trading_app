@@ -11,7 +11,7 @@ import 'package:crypto_trading_app/screens/home_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final apiKeyService = ApiKeyService();
+  final apiKeyService = APIKeyService();
   await apiKeyService.initialize();
   
   final binanceService = BinanceService(apiKeyService);

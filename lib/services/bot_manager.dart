@@ -25,6 +25,17 @@ class BotManager extends ChangeNotifier {
       return;
     }
 
+    final settings = BotSettings(
+      id: botId,
+      symbol: symbol,
+      minimumConfidence: minimumConfidence,
+      interval: interval,
+      isActive: true,
+    );
+
+    _bots[botId] = settings;
+    notifyListeners();
+
     final timer = Timer.periodic(interval, (timer) async {
       try {
         final analysis = await _aiAnalyzer.analyzeMarket(symbol);
@@ -51,21 +62,11 @@ class BotManager extends ChangeNotifier {
           }
         }
       } catch (e) {
-        debugPrint('Error in bot $botId: $e');
-        stopBot(botId);
+        print('Error in bot $botId: $e');
       }
     });
 
     _botTimers[botId] = timer;
-    _bots[botId] = BotSettings(
-      id: botId,
-      name: 'Bot $botId',
-      symbol: symbol,
-      minimumConfidence: minimumConfidence,
-      interval: interval,
-      isActive: true,
-    );
-    notifyListeners();
   }
 
   void stopBot(String botId) {
@@ -77,24 +78,6 @@ class BotManager extends ChangeNotifier {
       final bot = _bots[botId];
       if (bot != null) {
         _bots[botId] = bot.copyWith(isActive: false);
-      }
-      
-      notifyListeners();
-    }
-  }
-
-  void updateBotSettings(BotSettings settings) {
-    if (_bots.containsKey(settings.id)) {
-      stopBot(settings.id);
-      if (settings.isActive) {
-        startBot(
-          settings.id,
-          settings.symbol,
-          minimumConfidence: settings.minimumConfidence,
-          interval: settings.interval,
-        );
-      } else {
-        _bots[settings.id] = settings;
         notifyListeners();
       }
     }
