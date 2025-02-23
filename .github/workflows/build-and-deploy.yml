@@ -39,5 +39,4 @@ jobs:
             --token $VERCEL_TOKEN \
             --prod \
             --confirm \
-            --name crypto-trading-app \
-            --scope $VERCEL_ORG_ID
+            --name crypto-trading-app
