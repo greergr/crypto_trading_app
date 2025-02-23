@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../services/bot_manager.dart';
 import '../services/api_key_service.dart';
 import '../models/bot_settings.dart';
-import '../l10n/app_localizations.dart';
-import '../services/theme_provider.dart'; // Add this line
-import '../dialogs/language_selection_dialog.dart'; // Add this line
+import '../services/theme_provider.dart';
+import '../dialogs/language_selection_dialog.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +42,14 @@ class HomeScreen extends StatelessWidget {
             child: IconButton(
               icon: const Icon(Icons.language, color: Colors.white),
               tooltip: l10n.changeLanguage,
-              onPressed: () {
-                showDialog(
+              onPressed: () async {
+                final newLocale = await showDialog<Locale>(
                   context: context,
                   builder: (context) => const LanguageSelectionDialog(),
                 );
+                if (newLocale != null) {
+                  // TODO: Implement locale change
+                }
               },
             ),
           ),
