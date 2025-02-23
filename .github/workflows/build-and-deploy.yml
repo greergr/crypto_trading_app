@@ -44,5 +44,7 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           npm install -g vercel
-          vercel pull --yes --environment=production --token=$VERCEL_TOKEN
-          vercel build/web --token=$VERCEL_TOKEN --prod --yes --cwd=build/web
+          mkdir -p build/web/.vercel
+          echo '{"projectId":"'$VERCEL_PROJECT_ID'","orgId":"'$VERCEL_ORG_ID'"}' > build/web/.vercel/project.json
+          cd build/web
+          vercel --token $VERCEL_TOKEN --prod .
