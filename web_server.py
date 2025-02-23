@@ -1,42 +1,36 @@
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+import http.server
+import socketserver
 import os
 import webbrowser
-import logging
+from threading import Timer
 
-# إعداد السجلات
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+PORT = 8000
+DIRECTORY = "build/web"
 
-class WebServer:
-    def __init__(self, port=8000):
-        self.port = port
-        self.web_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'build/web')
+class Handler(http.server.SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, directory=DIRECTORY, **kwargs)
 
-    def start(self):
+def open_browser():
+    webbrowser.open(f'http://localhost:{PORT}')
+
+def run_server():
+    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+        print(f"Server running at http://localhost:{PORT}")
+        print("Press Ctrl+C to stop the server")
         try:
-            # التأكد من وجود المجلد
-            if not os.path.exists(self.web_dir):
-                logger.error(f"مجلد {self.web_dir} غير موجود!")
-                return
+            Timer(2.0, open_browser).start()  # Open browser after 2 seconds
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            print("\nServer stopped.")
+            httpd.shutdown()
 
-            # تغيير المجلد الحالي
-            os.chdir(self.web_dir)
-            
-            # إنشاء الخادم
-            server = HTTPServer(('0.0.0.0', self.port), SimpleHTTPRequestHandler)
-            url = f'http://localhost:{self.port}'
-            
-            logger.info(f'بدء تشغيل الخادم على: {url}')
-            
-            # فتح المتصفح
-            webbrowser.open(url)
-            
-            # تشغيل الخادم
-            server.serve_forever()
-            
-        except Exception as e:
-            logger.error(f'حدث خطأ: {str(e)}')
-
-if __name__ == '__main__':
-    server = WebServer()
-    server.start()
+if __name__ == "__main__":
+    if not os.path.exists(DIRECTORY):
+        print(f"Building Flutter web app...")
+        os.system("flutter build web")
+    
+    if os.path.exists(DIRECTORY):
+        run_server()
+    else:
+        print("Error: Could not find the web build directory.")

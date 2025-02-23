@@ -40,6 +40,40 @@ Check out our live web demo at: [https://greergr.github.io/crypto_trading_app/](
 - Android (coming soon)
 - iOS (coming soon)
 
+## 🌐 Publishing on Vercel
+
+The app is deployed on Vercel for 24/7 availability. To deploy your own version:
+
+1. Fork the repository
+2. Create an account on [Vercel](https://vercel.com)
+3. Click on "New Project"
+4. Select the forked repository
+5. Click on "Deploy"
+
+### 🔄 Automatic Deployment
+
+Deployment is done automatically:
+1. Push changes to the main branch
+2. Vercel will detect changes automatically
+3. A new deployment will start automatically
+4. After completion, the app will be updated
+
+### 📱 Manual Deployment
+
+If you want to deploy manually:
+1. Install Vercel CLI:
+   ```bash
+   npm i -g vercel
+   ```
+2. Log in:
+   ```bash
+   vercel login
+   ```
+3. Deploy:
+   ```bash
+   vercel
+   ```
+
 ## 📖 Documentation
 
 For help getting started with Flutter development:
