@@ -44,7 +44,9 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           npm install -g vercel
-          mkdir -p build/web/.vercel
-          echo '{"projectId":"'$VERCEL_PROJECT_ID'","orgId":"'$VERCEL_ORG_ID'"}' > build/web/.vercel/project.json
-          cd build/web
-          vercel --token $VERCEL_TOKEN --prod .
+          vercel deploy ./build/web \
+            --token $VERCEL_TOKEN \
+            --prod \
+            --yes \
+            --name crypto-trading-app \
+            --scope $VERCEL_ORG_ID
