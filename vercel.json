@@ -1,8 +1,8 @@
 {
   "version": 2,
+  "framework": "vite",
   "buildCommand": "sh build.sh",
   "outputDirectory": "build/web",
-  "framework": "flutter",
   "builds": [
     {
       "src": "build/web/**",
@@ -16,6 +16,9 @@
         "cache-control": "public, max-age=31536000, immutable"
       },
       "dest": "/build/web/assets/$1"
+    },
+    {
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
