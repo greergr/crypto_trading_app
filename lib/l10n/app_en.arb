@@ -23,6 +23,24 @@
   "tradeNotifications": "Trade Notifications",
   "riskAlerts": "Risk Alerts",
   "weeklyReports": "Weekly Reports",
-  "caption": "Caption",
+  "caption": "Crypto Trading Bot",
+  "@caption": {
+    "description": "The application name shown in the title bar"
+  },
+  "lightMode": "Switch to Light Mode",
+  "@lightMode": {
+    "description": "Tooltip for the light mode button"
+  },
+  "darkMode": "Switch to Dark Mode",
+  "@darkMode": {
+    "description": "Tooltip for the dark mode button"
+  },
+  "changeLanguage": "Change Language",
+  "@changeLanguage": {
+    "description": "Tooltip for the language change button"
+  },
+  "@selectLanguage": {
+    "description": "Title for the language selection dialog"
+  },
   "validateApiKeys": "Validate API Keys"
 }

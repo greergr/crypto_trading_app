@@ -20,24 +20,35 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(l10n.caption),
         actions: [
-          IconButton(
-            icon: Icon(
-              Provider.of<ThemeProvider>(context).isDarkMode 
-                ? Icons.light_mode 
-                : Icons.dark_mode
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 8),
+            child: IconButton(
+              icon: Icon(
+                Provider.of<ThemeProvider>(context).isDarkMode 
+                  ? Icons.light_mode 
+                  : Icons.dark_mode,
+                color: Colors.white,
+              ),
+              tooltip: Provider.of<ThemeProvider>(context).isDarkMode 
+                ? l10n.lightMode 
+                : l10n.darkMode,
+              onPressed: () {
+                Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+              },
             ),
-            onPressed: () {
-              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
-            },
           ),
-          IconButton(
-            icon: const Icon(Icons.language),
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) => const LanguageSelectionDialog(),
-              );
-            },
+          Container(
+            margin: const EdgeInsets.only(right: 8),
+            child: IconButton(
+              icon: const Icon(Icons.language, color: Colors.white),
+              tooltip: l10n.changeLanguage,
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => const LanguageSelectionDialog(),
+                );
+              },
+            ),
           ),
           IconButton(
             icon: const Icon(Icons.settings),

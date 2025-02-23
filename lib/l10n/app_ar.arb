@@ -3,6 +3,9 @@
   "appTitle": "روبوت تداول العملات المشفرة",
   "welcomeMessage": "مرحباً بك في روبوت تداول العملات المشفرة",
   "selectLanguage": "اختر اللغة",
+  "@selectLanguage": {
+    "description": "Title for the language selection dialog"
+  },
   "english": "English",
   "arabic": "العربية",
   "settings": "الإعدادات",
@@ -23,6 +26,21 @@
   "tradeNotifications": "إشعارات التداول",
   "riskAlerts": "تنبيهات المخاطر",
   "weeklyReports": "التقارير الأسبوعية",
-  "caption": "وصف",
+  "caption": "روبوت تداول العملات الرقمية",
+  "@caption": {
+    "description": "The application name shown in the title bar"
+  },
+  "lightMode": "التبديل إلى الوضع الفاتح",
+  "@lightMode": {
+    "description": "Tooltip for the light mode button"
+  },
+  "darkMode": "التبديل إلى الوضع الداكن",
+  "@darkMode": {
+    "description": "Tooltip for the dark mode button"
+  },
+  "changeLanguage": "تغيير اللغة",
+  "@changeLanguage": {
+    "description": "Tooltip for the language change button"
+  },
   "validateApiKeys": "التحقق من مفاتيح API"
 }

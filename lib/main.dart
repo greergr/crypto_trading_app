@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'l10n/app_localizations.dart';
-import 'services/bot_manager.dart';
-import 'services/api_key_service.dart';
-import 'services/binance_service.dart';
 import 'screens/home_screen.dart';
+import 'services/theme_provider.dart';
+import 'services/binance_service.dart';
+import 'services/api_key_service.dart';
+import 'services/bot_manager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
-  final apiKeyService = APIKeyService();
+  final apiKeyService = ApiKeyService();
   await apiKeyService.initialize();
   
   final binanceService = BinanceService(apiKeyService);
@@ -52,7 +53,8 @@ class CryptoTradingApp extends StatelessWidget {
         return MaterialApp(
           title: 'Crypto Trading Bot',
           theme: themeProvider.currentTheme,
-          darkTheme: themeProvider.currentTheme,
+          darkTheme: ThemeData.dark(),
+          themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
