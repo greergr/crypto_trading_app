@@ -1,31 +1,23 @@
 import 'package:flutter/foundation.dart';
 
 class Logger {
-  final String tag;
+  final String _tag;
 
-  Logger([this.tag = '']);
+  Logger(this._tag);
 
   void d(String message) {
-    _log('DEBUG', message);
+    print('[$_tag] DEBUG: $message');
   }
 
   void i(String message) {
-    _log('INFO', message);
+    print('[$_tag] INFO: $message');
   }
 
   void w(String message) {
-    _log('WARN', message);
+    print('[$_tag] WARN: $message');
   }
 
   void e(String message) {
-    _log('ERROR', message);
-  }
-
-  void _log(String level, String message) {
-    if (kDebugMode) {
-      final timestamp = DateTime.now().toIso8601String();
-      final prefix = tag.isNotEmpty ? '[$tag]' : '';
-      print('$timestamp $level $prefix $message');
-    }
+    print('[$_tag] ERROR: $message');
   }
 }

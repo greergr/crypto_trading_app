@@ -1,11 +1,6 @@
 enum TradeType {
   buy,
-  sell;
-
-  @override
-  String toString() {
-    return name.toUpperCase();
-  }
+  sell
 }
 
 enum MarketSentiment {
@@ -24,4 +19,14 @@ enum TradeDirection {
   long,
   short,
   neutral
+}
+
+class MarketAnalysis {
+  final MarketSentiment sentiment;
+  final double confidence;
+
+  MarketAnalysis({
+    required this.sentiment,
+    required this.confidence,
+  });
 }

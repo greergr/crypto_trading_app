@@ -3,13 +3,27 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:crypto_trading_app/services/theme_provider.dart';
+import 'package:crypto_trading_app/services/api_key_service.dart';
+import 'package:crypto_trading_app/services/binance_service.dart';
+import 'package:crypto_trading_app/services/bot_manager.dart';
 import 'package:crypto_trading_app/screens/home_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final apiKeyService = ApiKeyService();
+  await apiKeyService.initialize();
+  
+  final binanceService = BinanceService(apiKeyService);
+  final botManager = BotManager(binanceService);
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider.value(value: apiKeyService),
+        ChangeNotifierProvider.value(value: botManager),
+        Provider.value(value: binanceService),
       ],
       child: const MyApp(),
     ),
