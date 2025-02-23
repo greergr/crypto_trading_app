@@ -22,10 +22,24 @@ void main() async {
         ChangeNotifierProvider(create: (_) => apiKeyService),
         ChangeNotifierProvider(create: (_) => botManager),
         Provider.value(value: binanceService),
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
       ],
       child: const CryptoTradingApp(),
     ),
   );
+}
+
+class ThemeProvider extends ChangeNotifier {
+  bool _isDarkMode = false;
+
+  bool get isDarkMode => _isDarkMode;
+
+  void toggleTheme() {
+    _isDarkMode = !_isDarkMode;
+    notifyListeners();
+  }
+
+  ThemeData get currentTheme => _isDarkMode ? ThemeData.dark() : ThemeData.light();
 }
 
 class CryptoTradingApp extends StatelessWidget {
@@ -33,27 +47,25 @@ class CryptoTradingApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Crypto Trading Bot',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.light,
-      ),
-      darkTheme: ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.dark,
-      ),
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('ar'),
-      ],
-      home: const HomeScreen(),
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        return MaterialApp(
+          title: 'Crypto Trading Bot',
+          theme: themeProvider.currentTheme,
+          darkTheme: themeProvider.currentTheme,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('en'),
+            Locale('ar'),
+          ],
+          home: const HomeScreen(),
+        );
+      },
     );
   }
 }

@@ -4,6 +4,8 @@ import '../services/bot_manager.dart';
 import '../services/api_key_service.dart';
 import '../models/bot_settings.dart';
 import '../l10n/app_localizations.dart';
+import '../services/theme_provider.dart'; // Add this line
+import '../dialogs/language_selection_dialog.dart'; // Add this line
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -18,6 +20,25 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(l10n.caption),
         actions: [
+          IconButton(
+            icon: Icon(
+              Provider.of<ThemeProvider>(context).isDarkMode 
+                ? Icons.light_mode 
+                : Icons.dark_mode
+            ),
+            onPressed: () {
+              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.language),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => const LanguageSelectionDialog(),
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
