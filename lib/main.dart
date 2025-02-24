@@ -16,41 +16,31 @@ void main() async {
   
   final binanceService = BinanceService(apiKeyService);
   final botManager = BotManager(binanceService);
+  final themeProvider = ThemeProvider();
 
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider.value(value: themeProvider),
         ChangeNotifierProvider.value(value: apiKeyService),
         ChangeNotifierProvider.value(value: botManager),
         Provider.value(value: binanceService),
       ],
-      child: const MyApp(),
+      child: const CryptoTradingApp(),
     ),
   );
 }
 
-class ThemeProvider extends ChangeNotifier {
-  bool _isDarkMode = false;
-
-  bool get isDarkMode => _isDarkMode;
-
-  void toggleTheme() {
-    _isDarkMode = !_isDarkMode;
-    notifyListeners();
-  }
-
-  ThemeData get currentTheme => _isDarkMode ? ThemeData.dark() : ThemeData.light();
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CryptoTradingApp extends StatelessWidget {
+  const CryptoTradingApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    
     return MaterialApp(
       title: 'Crypto Trading Bot',
-      theme: Provider.of<ThemeProvider>(context).currentTheme,
+      theme: themeProvider.currentTheme,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

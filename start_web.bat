@@ -1,4 +1,4 @@
 @echo off
-echo Starting Web Server...
-python web_server.py
+echo Starting Flutter Web Server...
+flutter run -d chrome --web-port=3000
 pause
