@@ -1,9 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "flutter build web --release",
+  "buildCommand": "npm run vercel-build",
   "outputDirectory": "build/web",
-  "installCommand": "flutter pub get",
-  "framework": "flutter",
   "routes": [
     {
       "src": "/(.*)",

@@ -1,8 +1,10 @@
 {
-  "name": "crypto-trading-app",
+  "name": "crypto_trading_app",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "chmod +x ./build.sh && ./build.sh"
+    "install-flutter": "git clone https://github.com/flutter/flutter.git && export PATH=\"$PATH:`pwd`/flutter/bin\" && flutter precache && flutter doctor",
+    "build": "flutter build web --release",
+    "vercel-build": "npm run install-flutter && flutter pub get && flutter build web --release"
   }
 }
