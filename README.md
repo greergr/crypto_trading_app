@@ -1,90 +1,80 @@
-# Crypto Trading App 📈
+# Crypto Trading App
 
-A Flutter-based cryptocurrency trading application that supports automated trading strategies and real-time market analysis.
+تطبيق تداول العملات المشفرة مع روبوتات تداول ذكية.
 
-## ✨ Features
+## المميزات
 
-- 📊 Real-time cryptocurrency price tracking
-- 🤖 Automated trading bots
-- 📈 Advanced market analysis
-- 📋 Performance reporting
-- 🌐 Multi-language support (English/Arabic)
-- 🌓 Dark/Light theme
+- واجهة مستخدم حديثة وسهلة الاستخدام
+- دعم اللغة العربية والإنجليزية
+- تحليلات السوق المتقدمة
+- روبوتات تداول متعددة الاستراتيجيات
+- تقارير أداء مفصلة
+- وضع التداول التجريبي
 
-## 🚀 Getting Started
+## متطلبات التشغيل
 
-This project is built with Flutter. To get started:
+- Flutter SDK (3.16.0 أو أحدث)
+- Dart SDK (3.0.0 أو أحدث)
+- مفاتيح API من Binance
 
-1. Install [Flutter](https://flutter.dev/docs/get-started/install)
-2. Clone this repository:
+## التثبيت
+
+1. استنسخ المستودع:
    ```bash
    git clone https://github.com/greergr/crypto_trading_app.git
    cd crypto_trading_app
    ```
-3. Install dependencies:
+
+2. قم بتثبيت التبعيات:
    ```bash
    flutter pub get
    ```
-4. Run the app:
-   ```bash
-   flutter run
+
+3. قم بإنشاء ملف `.env` في المجلد الرئيسي:
+   ```
+   BINANCE_API_KEY=your_api_key
+   BINANCE_API_SECRET=your_api_secret
    ```
 
-## 🌐 Web Demo
+## التشغيل
 
-Check out our live web demo at: [https://greergr.github.io/crypto_trading_app/](https://greergr.github.io/crypto_trading_app/)
+### تشغيل محلي
+```bash
+flutter run -d chrome
+```
 
-## 📱 Supported Platforms
+### بناء للنشر
+```bash
+flutter build web --release --base-href /crypto_trading_app/
+```
 
-- Web
-- Android (coming soon)
-- iOS (coming soon)
+## النشر
 
-## 🌐 Publishing on Vercel
+### GitHub Pages
 
-The app is deployed on Vercel for 24/7 availability. To deploy your own version:
+1. قم بتمكين GitHub Pages في إعدادات المستودع
+2. اختر فرع `gh-pages` كمصدر
+3. سيتم النشر تلقائياً عند الدفع إلى فرع `main`
 
-1. Fork the repository
-2. Create an account on [Vercel](https://vercel.com)
-3. Click on "New Project"
-4. Select the forked repository
-5. Click on "Deploy"
+### Vercel
 
-### 🔄 Automatic Deployment
+1. قم بربط المستودع مع Vercel
+2. اضبط إعدادات المشروع:
+   - Framework Preset: `Other`
+   - Build Command: `flutter build web --release`
+   - Output Directory: `build/web`
+   - Install Command: `flutter pub get`
 
-Deployment is done automatically:
-1. Push changes to the main branch
-2. Vercel will detect changes automatically
-3. A new deployment will start automatically
-4. After completion, the app will be updated
+## المساهمة
 
-### 📱 Manual Deployment
+نرحب بمساهماتكم! يرجى اتباع هذه الخطوات:
 
-If you want to deploy manually:
-1. Install Vercel CLI:
-   ```bash
-   npm i -g vercel
-   ```
-2. Log in:
-   ```bash
-   vercel login
-   ```
-3. Deploy:
-   ```bash
-   vercel
-   ```
+1. Fork المستودع
+2. إنشاء فرع للميزة: `git checkout -b feature/amazing-feature`
+3. Commit التغييرات: `git commit -m 'Add amazing feature'`
+4. Push إلى الفرع: `git push origin feature/amazing-feature`
+5. فتح Pull Request
 
-## 📖 Documentation
+## الترخيص
 
-For help getting started with Flutter development:
-- [Flutter Documentation](https://flutter.dev/docs)
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check our [issues page](https://github.com/greergr/crypto_trading_app/issues).
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+هذا المشروع مرخص تحت رخصة MIT - انظر ملف [LICENSE](LICENSE) للتفاصيل.
