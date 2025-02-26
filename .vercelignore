@@ -2,5 +2,7 @@
 .env
 node_modules
 *.log
-*
+flutter
+!package.json
+!vercel.json
 !build/web/**
