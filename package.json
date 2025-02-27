@@ -5,7 +5,9 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "setup": "git clone https://github.com/flutter/flutter.git && export PATH=\"$PATH:`pwd`/flutter/bin\"",
-    "vercel-build": "npm run setup && flutter pub get && flutter build web --release --web-renderer html"
+    "setup-flutter": "git clone https://github.com/flutter/flutter.git",
+    "set-path": "export PATH=\"$PWD/flutter/bin:$PATH\" && flutter doctor",
+    "build-web": "flutter build web --release --web-renderer html",
+    "vercel-build": "npm run setup-flutter && npm run set-path && flutter pub get && npm run build-web"
   }
 }
