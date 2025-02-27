@@ -6,8 +6,8 @@
   },
   "scripts": {
     "setup-flutter": "git clone https://github.com/flutter/flutter.git",
-    "set-path": "export PATH=\"$PWD/flutter/bin:$PATH\" && flutter doctor",
-    "build-web": "flutter build web --release --web-renderer html",
-    "vercel-build": "npm run setup-flutter && npm run set-path && flutter pub get && npm run build-web"
+    "init-flutter": "./flutter/bin/flutter config --no-analytics && ./flutter/bin/flutter config --enable-web",
+    "build-web": "./flutter/bin/flutter build web --release --web-renderer html",
+    "vercel-build": "npm run setup-flutter && npm run init-flutter && ./flutter/bin/flutter pub get && npm run build-web"
   }
 }
