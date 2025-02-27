@@ -3,11 +3,5 @@
   "version": "1.0.0",
   "engines": {
     "node": ">=18.0.0"
-  },
-  "scripts": {
-    "setup-flutter": "git clone https://github.com/flutter/flutter.git",
-    "init-flutter": "cd flutter/bin && ./flutter config --no-analytics && ./flutter config --enable-web",
-    "build-web": "cd flutter/bin && ./flutter build web --release --web-renderer html",
-    "vercel-build": "npm run setup-flutter && npm run init-flutter && cd flutter/bin && ./flutter pub get && cd ../.. && npm run build-web"
   }
 }

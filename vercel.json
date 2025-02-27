@@ -1,7 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "npm run vercel-build",
+  "buildCommand": "cd flutter/bin && ./flutter build web --release --web-renderer html",
   "outputDirectory": "build/web",
+  "installCommand": "git clone https://github.com/flutter/flutter.git && cd flutter/bin && ./flutter config --no-analytics && ./flutter config --enable-web && ./flutter pub get",
   "headers": [
     {
       "source": "/(.*)",
